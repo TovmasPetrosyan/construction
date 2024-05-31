@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './language.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,11 +8,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'construction';
-  constructor(private translate:TranslateService){
-    translate.addLangs(['en','hy']);
-    translate.setDefaultLang('en');
+  constructor(private languageService: LanguageService) { }
+
+  ngOnInit() {
+    this.languageService.initializeLanguage();
   }
-  switchLanguage(lang:string){
-    this.translate.use(lang);
+
+  switchLanguage(language: string) {
+    this.languageService.switchLanguage(language);
   }
 }

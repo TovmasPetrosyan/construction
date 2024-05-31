@@ -8,8 +8,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProductsComponent } from './products/products.component';
 import { AboutComponent } from './about/about.component';
+import { LanguageService } from './language.service';
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http,'./assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -30,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductsComponent,
     AboutComponent
   ],
-  providers: [ provideHttpClient(withInterceptorsFromDi())],
+  providers: [LanguageService, provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

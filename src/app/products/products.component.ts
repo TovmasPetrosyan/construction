@@ -14,7 +14,7 @@ export class ProductsComponent {
     //translate.setDefaultLang('en');
   }
 
-  switchLanguage(lang: string) {
-    this.translate.use(lang);
-  }
+  // switchLanguage(lang: string) {
+  //   this.translate.use(lang);
+  // }
 }
